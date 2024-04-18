@@ -1,0 +1,37 @@
+### GET request with a header
+GET http://localhost:3000/cart/andres
+Accept: application/json
+
+### Send POST request with json body
+POST http://localhost:3000/cart
+Content-Type: application/json
+
+{
+  "idUser": "andres",
+  "name": "The Hobbit",
+  "idProduct": "10002",
+  "quantity": 5
+}
+
+
+### Send POST request with json body
+POST http://localhost:3000/cart
+Content-Type: application/json
+
+{
+  "idUser": "andres",
+  "name": "Breaking Bad",
+  "idProduct": "20110",
+  "quantity": 5
+}
+
+### Send POST request with json body
+POST http://localhost:3000/cart
+Content-Type: application/json
+
+{
+  "idUser": "andres",
+  "name": "Game of Thrones",
+  "idProduct": "20001",
+  "quantity": 2
+}
