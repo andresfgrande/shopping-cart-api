@@ -16,6 +16,7 @@ export interface ShoppingCartPrimitives {
 
 export class ShoppingCart {
   private creationDate: CreationDate;
+
   private idUser: UserId;
 
   private items: ShoppingCartItems;

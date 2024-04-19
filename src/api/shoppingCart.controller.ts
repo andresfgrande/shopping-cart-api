@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ProductAdder } from '../context/shoppingCart/services/productAdder.service';
 import { ShoppingCartContentCreator } from '../context/shoppingCart/services/shoppingCartContentCreator.service';
 
@@ -54,12 +54,14 @@ export class ShoppingCartController {
   }
 
   @Get('/:idUser')
-  getContent(@Param('idUser') idUser: string): ContentResponseDTO {
-    const request: ContentRequestDTO = { idUser: idUser };
-    return this.shoppingCartContentCreator.execute(request);
+  async getContent(
+    @Param('idUser') idUser: string,
+  ): Promise<ContentResponseDTO> {
+    const request: ContentRequest = { idUser: idUser };
+    return await this.shoppingCartContentCreator.execute(request);
   }
 
-  @Get('test/:id')
+  @Get('tests/:id')
   getTestContent(@Param('id') id: string): string {
     return id;
   }

@@ -13,7 +13,6 @@ Content-Type: application/json
   "quantity": 5
 }
 
-
 ### Send POST request with json body
 POST http://localhost:3000/cart
 Content-Type: application/json
@@ -34,4 +33,37 @@ Content-Type: application/json
   "name": "Game of Thrones",
   "idProduct": "20001",
   "quantity": 2
+}
+
+### Send POST request with json body
+POST http://localhost:3000/cart
+Content-Type: application/json
+
+{
+  "idUser": "bob",
+  "name": "The Hobbit",
+  "idProduct": "10002",
+  "quantity": 1
+}
+
+### Send POST request with json body
+POST http://localhost:3000/cart
+Content-Type: application/json
+
+{
+  "idUser": "bob",
+  "name": "Game of Thrones",
+  "idProduct": "20001",
+  "quantity": 1
+}
+
+### Send POST request with json body
+POST http://localhost:3000/cart
+Content-Type: application/json
+
+{
+  "idUser": "bob",
+  "name": "Breaking Bad",
+  "idProduct": "20110",
+  "quantity": 1
 }

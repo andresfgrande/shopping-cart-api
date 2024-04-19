@@ -1,19 +1,19 @@
-import {
-  ContentRequestDTO,
-  ContentResponseDTO,
-  ShoppingCartController,
-} from '../../../src/shopping-cart/api/controllers/shoppingCart.controller';
-import { ProductAdder } from '../../../src/shopping-cart/context/shopping-cart/services/productAdder.service';
-import { InMemoryShoppingCartRepository } from '../../../src/shopping-cart/context/shopping-cart/infrastructure/inMemoryShoppingCartRepository';
-import { DateGenerator } from '../../../src/shopping-cart/context/shopping-cart/infrastructure/dateGenerator';
-import { ShoppingCartContentCreator } from '../../../src/shopping-cart/context/shopping-cart/services/shoppingCartContentCreator.service';
-import { InMemoryProductRepository } from '../../../src/shopping-cart/context/shopping-cart/infrastructure/inMemoryProductRepository';
+import { DateGenerator } from '../../../src/context/shoppingCart/infrastructure/dateGenerator';
+import { InMemoryShoppingCartRepository } from '../../../src/context/shoppingCart/infrastructure/inMemoryShoppingCartRepository';
+import { InMemoryProductRepository } from '../../../src/context/shoppingCart/infrastructure/inMemoryProductRepository';
 import {
   Price,
   Product,
   ProductId,
   ProductName,
-} from '../../../src/shopping-cart/context/shopping-cart/domain/product';
+} from '../../../src/context/shoppingCart/domain/product';
+import { ProductAdder } from '../../../src/context/shoppingCart/services/productAdder.service';
+import { ShoppingCartContentCreator } from '../../../src/context/shoppingCart/services/shoppingCartContentCreator.service';
+import {
+  ContentRequestDTO,
+  ContentResponseDTO,
+  ShoppingCartController,
+} from '../../../src/api/shoppingCart.controller';
 
 describe('ShoppingCart should', () => {
   beforeEach(() => {
@@ -77,7 +77,7 @@ describe('ShoppingCart should', () => {
     };
 
     expect(
-      shoppingCartController.getContent(shoppingCartContentRequest),
+      shoppingCartController.getContent(shoppingCartContentRequest.idUser),
     ).toStrictEqual(expectedShoppingCart);
   });
 
@@ -153,7 +153,7 @@ describe('ShoppingCart should', () => {
     };
 
     expect(
-      shoppingCartController.getContent(shoppingCartContentRequest),
+      shoppingCartController.getContent(shoppingCartContentRequest.idUser),
     ).toStrictEqual(expectedShoppingCart);
   });
 
@@ -222,11 +222,11 @@ describe('ShoppingCart should', () => {
     };
 
     expect(
-      shoppingCartController.getContent(shoppingCartContentRequest),
+      shoppingCartController.getContent(shoppingCartContentRequest.idUser),
     ).toStrictEqual(expectedShoppingCart);
   });
 });
 
-//Crear test integracion para date generator y repository -- OK
-//Crear servicio para obtener contenido y poner en verde este test --OK
-//Otro acceptance test con 2 productos --OK
+//Crear tests integracion para date generator y repository -- OK
+//Crear servicio para obtener contenido y poner en verde este tests --OK
+//Otro acceptance tests con 2 productos --OK

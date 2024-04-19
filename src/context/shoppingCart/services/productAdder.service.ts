@@ -1,11 +1,13 @@
-import { InMemoryShoppingCartRepository } from '../infrastructure/inMemoryShoppingCartRepository';
+//import { InMemoryShoppingCartRepository } from '../infrastructure/inMemoryShoppingCartRepository';
 import { DateGenerator } from '../infrastructure/dateGenerator';
 import { ShoppingCart } from '../domain/shopping.cart';
-import { InMemoryProductRepository } from '../infrastructure/inMemoryProductRepository';
 import { ProductId } from '../domain/product';
 import { UserId } from '../domain/userId';
 import { CreationDate } from '../domain/creationDate';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+
+import { ShoppingCartRepository } from '../infrastructure/shoppingCartRepository';
+import { ProductRepository } from '../infrastructure/productRepository';
 
 export interface AddItemAdderRequest {
   idUser: string;
@@ -16,17 +18,19 @@ export interface AddItemAdderRequest {
 @Injectable()
 export class ProductAdder {
   constructor(
-    private shoppingCartRepository: InMemoryShoppingCartRepository,
+    @Inject('ShoppingCartRepository')
+    private shoppingCartRepository: ShoppingCartRepository,
     private dateGenerator: DateGenerator,
-    private productRepository: InMemoryProductRepository,
+    @Inject('ProductRepository')
+    private productRepository: ProductRepository,
   ) {}
 
-  execute(addProductRequest: AddItemAdderRequest) {
-    let currentShoppingCart = this.shoppingCartRepository.getByUserId(
+  async execute(addProductRequest: AddItemAdderRequest): Promise<void> {
+    let currentShoppingCart = await this.shoppingCartRepository.getByUserId(
       new UserId(addProductRequest.idUser),
     );
 
-    const product = this.productRepository.getProductById(
+    const product = await this.productRepository.getProductById(
       new ProductId(addProductRequest.idProduct),
     );
     if (!product) {
@@ -46,6 +50,6 @@ export class ProductAdder {
       product.toPrimitives().price,
       addProductRequest.quantity,
     );
-    this.shoppingCartRepository.save(currentShoppingCart);
+    await this.shoppingCartRepository.save(currentShoppingCart);
   }
 }

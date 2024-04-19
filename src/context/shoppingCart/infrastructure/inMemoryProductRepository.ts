@@ -1,8 +1,9 @@
 import { Price, Product, ProductId, ProductName } from '../domain/product';
 import { Injectable } from '@nestjs/common';
+import { ProductRepository } from './productRepository';
 
 @Injectable()
-export class InMemoryProductRepository {
+export class InMemoryProductRepository implements ProductRepository {
   private products = new Map<string, Product>();
 
   constructor() {
@@ -26,11 +27,12 @@ export class InMemoryProductRepository {
     this.save(newProduct3);
   }
 
-  getProductById(id: ProductId): Product {
-    return this.products.get(id.toString());
+  getProductById(id: ProductId): Promise<Product> {
+    return Promise.resolve(this.products.get(id.toString()));
   }
 
-  save(product: Product) {
+  save(product: Product): Promise<void> {
     this.products.set(product.getProductId(), product);
+    return Promise.resolve();
   }
 }

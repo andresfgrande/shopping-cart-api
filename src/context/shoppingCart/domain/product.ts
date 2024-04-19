@@ -36,11 +36,16 @@ export class Price {
 }
 
 export class Product {
-  constructor(
-    private idProduct: ProductId,
-    private name: ProductName,
-    private price: Price,
-  ) {}
+  private idProduct: ProductId;
+  private name: ProductName;
+
+  private price: Price;
+
+  constructor(idProduct: ProductId, name: ProductName, price: Price) {
+    this.idProduct = idProduct;
+    this.name = name;
+    this.price = price;
+  }
 
   static fromPrimitives(productPrimitives: {
     idProduct: string;
@@ -55,13 +60,11 @@ export class Product {
   }
 
   toPrimitives(): ProductPrimitives {
-    const content: ProductPrimitives = {
+    return {
       idProduct: this.idProduct.toString(),
       name: this.name.toString(),
       price: this.price.toNumber(),
     };
-
-    return content;
   }
 
   getProductId(): string {
