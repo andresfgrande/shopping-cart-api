@@ -1,4 +1,4 @@
-import { Price, ProductId, ProductName } from './product';
+import { ProductId, ProductName } from './product';
 import { ShoppingCartItems } from './shoppingCartItems';
 import {
   ShoppingCartItem,
@@ -7,6 +7,7 @@ import {
 import { UserId } from './userId';
 import { ProductQuantity } from './productQuantity';
 import { CreationDate } from './creationDate';
+import { Price } from './price';
 
 export interface ShoppingCartPrimitives {
   creationDate: string;

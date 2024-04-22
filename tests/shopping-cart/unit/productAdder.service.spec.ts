@@ -6,12 +6,12 @@ import { CreationDate } from '../../../src/context/shoppingCart/domain/creationD
 import { ShoppingCart } from '../../../src/context/shoppingCart/domain/shopping.cart';
 import { UserId } from '../../../src/context/shoppingCart/domain/userId';
 import {
-  Price,
   Product,
   ProductId,
   ProductName,
 } from '../../../src/context/shoppingCart/domain/product';
 import { mock } from 'jest-mock-extended';
+import { Price } from '../../../src/context/shoppingCart/domain/price';
 
 describe('ProductAdder', () => {
   it('Should add product', () => {

@@ -1,7 +1,8 @@
 //Class Collections
-import { Price, ProductId, ProductName } from './product';
+import { ProductId, ProductName } from './product';
 
 import { ProductQuantity } from './productQuantity';
+import { Price } from './price';
 
 export interface ShoppingCartItemInterface {
   id: string;
@@ -24,6 +25,9 @@ export class ShoppingCartItem {
   }
 
   getTotal(): number {
+    //const quantity = this.quantity.value();
+    //const unitPrice = this.unitPrice.value();
+    //return quantity * unitPrice;
     return this.quantity.value() * this.unitPrice.toNumber();
   }
 

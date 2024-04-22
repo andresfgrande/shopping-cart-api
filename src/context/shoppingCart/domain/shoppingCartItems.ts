@@ -1,9 +1,10 @@
-import { Price, ProductId, ProductName } from './product';
+import { ProductId, ProductName } from './product';
 import {
   ShoppingCartItem,
   ShoppingCartItemInterface,
 } from './shoppingCartItem';
 import { ProductQuantity } from './productQuantity';
+import { Price } from './price';
 
 export class ShoppingCartItems {
   private items: ShoppingCartItem[];

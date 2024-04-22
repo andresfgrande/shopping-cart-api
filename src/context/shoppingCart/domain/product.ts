@@ -1,3 +1,5 @@
+import { Price } from './price';
+
 interface ProductResponse {
   idProduct: string;
   name: string;
@@ -24,14 +26,6 @@ export class ProductName {
 
   toString() {
     return this.name;
-  }
-}
-
-export class Price {
-  constructor(private price: number) {}
-
-  toNumber() {
-    return this.price;
   }
 }
 

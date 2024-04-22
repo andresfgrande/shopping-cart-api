@@ -1,6 +1,7 @@
-import { Price, Product, ProductId, ProductName } from '../domain/product';
+import { Product, ProductId, ProductName } from '../domain/product';
 import { Injectable } from '@nestjs/common';
 import { ProductRepository } from './productRepository';
+import { Price } from '../domain/price';
 
 @Injectable()
 export class InMemoryProductRepository implements ProductRepository {

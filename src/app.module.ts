@@ -6,7 +6,6 @@ import { DateGenerator } from './context/shoppingCart/infrastructure/dateGenerat
 import { MongoProductRepository } from './context/shoppingCart/infrastructure/mongoProductRepository';
 import { MongoShoppingCartRepository } from './context/shoppingCart/infrastructure/mongoShoppingCartRepository';
 import {
-  Price,
   Product,
   ProductId,
   ProductName,
@@ -14,6 +13,7 @@ import {
 
 import { MongoClient } from 'mongodb';
 import { MongoService } from './context/shoppingCart/infrastructure/mongoService';
+import { Price } from './context/shoppingCart/domain/price';
 const mongoClient = {
   provide: MongoClient,
   useFactory: async () => {

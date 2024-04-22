@@ -2,7 +2,6 @@ import { DateGenerator } from '../../../src/context/shoppingCart/infrastructure/
 import { InMemoryShoppingCartRepository } from '../../../src/context/shoppingCart/infrastructure/inMemoryShoppingCartRepository';
 import { InMemoryProductRepository } from '../../../src/context/shoppingCart/infrastructure/inMemoryProductRepository';
 import {
-  Price,
   Product,
   ProductId,
   ProductName,
@@ -14,6 +13,7 @@ import {
   ContentResponseDTO,
   ShoppingCartController,
 } from '../../../src/api/shoppingCart.controller';
+import { Price } from '../../../src/context/shoppingCart/domain/price';
 
 describe('ShoppingCart should', () => {
   beforeEach(() => {
